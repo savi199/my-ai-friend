@@ -196,7 +196,7 @@ function App() {
     setLoading(true)
 
     try {
-      const response = await fetch("my-ai-friend-production.up.railway.app", {
+      const response = await fetch("my-ai-friend-production.up.railway.app/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -213,7 +213,7 @@ function App() {
       await saveMessages(finalMessages, chatId)
 
       if (finalMessages.length % 5 === 0) {
-        const memRes = await fetch("my-ai-friend-production.up.railway.app", {
+        const memRes = await fetch("my-ai-friend-production.up.railway.app/extract-memory", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ messages: finalMessages })
